@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  
+  Customer Code :<input [(ngModel)]="CustomerModel.CustomerCode" type=text/><br>
+  Customer Name :<input [(ngModel)]="CustomerModel.CustomerName" type=text/><br>
+  Customer Amount :<input [(ngModel)]="CustomerModel.CustomerAmount" type=text/><br>
+  <input (click)="Add()" type=button value="Add customer"/>
+  {{CustomerModel.CustomerCode}} <br>
+  {{CustomerModel.CustomerName}} <br>
+  {{CustomerModel.CustomerAmount}} <br>
+
+  <table>
+    <tr>
+      <td>Code</td>
+      <td>Name</td>
+      <td>Amount</td>
+    </tr>
+    <tr *ngFor="let cust of CustomerModels">
+      <td>{{cust.CustomerCode}}</td>
+      <td>{{cust.CustomerName}}</td>
+      <td>{{cust.CustomerAmount}}</td>
+    </tr>
+  </table>
+
+<router-outlet></router-outlet>
