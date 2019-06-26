@@ -1,22 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { FormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { CustomerComponent } from '../CustomerApp.component';
-import { MainRoutes } from '../Routing/CustomerApp.MainRouting';
-import { AppRoutingModule } from '../app-routing.module';
+import { CustomerRoutes } from '../Routing/CustomerApp.CustomerRouting';
+// import { AppRoutingModule } from '../app-routing.module';
+import { CustomerComponent } from './CustomerApp.CustomerComponent';
 
 @NgModule({
   declarations: [
     CustomerComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    // BrowserModule,
+    CommonModule,
+    // AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(MainRoutes)
+    RouterModule.forChild(CustomerRoutes)
   ],
   providers: [],
   bootstrap: [CustomerComponent]
