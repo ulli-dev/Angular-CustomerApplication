@@ -6,16 +6,19 @@
   
   <form [formGroup]="CustomerModel.formCustomerGroup">
   Customer Code :<input formControlName="CustomerCodeControl" [(ngModel)]="CustomerModel.CustomerCode" type=text/>
-  <div [hidden]="!(CustomerModel.formCustomerGroup.controls['CustomerCodeControl'].hasError('pattern'))">Customer code needs to be 4 number digits</div>
-  <div [hidden]="!(CustomerModel.formCustomerGroup.controls['CustomerCodeControl'].hasError('required'))">Customer code is required</div><br>
+  <div *ngIf="CustomerModel.formCustomerGroup.dirty" [hidden]="!(CustomerModel.formCustomerGroup.controls['CustomerNameControl'].hasError('required'))">Customer code needs to be 4 number digits</div>
+  <div *ngIf="CustomerModel.formCustomerGroup.dirty" [hidden]="!(CustomerModel.formCustomerGroup.controls['CustomerNameControl'].hasError('required'))">Customer code is required</div><br>
 
   Customer Name :<input formControlName="CustomerNameControl" [(ngModel)]="CustomerModel.CustomerName" type=text/>
-  <div [hidden]="!(CustomerModel.formCustomerGroup.controls['CustomerNameControl'].hasError('required'))">Customer name is required</div><br>
+  <div *ngIf="CustomerModel.formCustomerGroup.dirty" [hidden]="!(CustomerModel.formCustomerGroup.controls['CustomerNameControl'].hasError('required'))">Customer name is required</div><br>
 
   Customer Amount :<input [(ngModel)]="CustomerModel.CustomerAmount" [ngModelOptions]="{standalone: true}" type=text/><br>
   <input [disabled]="!(CustomerModel.formCustomerGroup.valid)" (click)="Add()" type=button value="Add customer"/>
 </form>
-
+<!-- In all three instances of ngIf, replace whats inside the *ngIf..[hidden] with [hidden]="!(hasError('required','CustomerCodeControl'))". 
+  Original cocde was:
+     [hidden]="!(CustomerModel.formCustomerGroup.controls['CustomerNameControl'].hasError('required'))" -->
+     <!-- "!(hasError('required','CustomerCodeControl'))" -->
 
   {{CustomerModel.CustomerCode}} <br>
   {{CustomerModel.CustomerName}} <br>
